@@ -1,5 +1,6 @@
 package com.fbandroidsdktestapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -91,11 +92,16 @@ public class MainActivity extends FragmentActivity implements OnItemClickListene
         mUserPic = (ProfilePictureView) MainActivity.this.findViewById(R.id.user_pic);
     }
 
+    // Snippet for managing mobile app install ads go into
+    // the onResume function, Always!
     @Override
     public void onResume() {
         super.onResume();
         uiHelper.onResume();
         isResumed = true;
+        
+        // Configure this application for Mobile App install Ads
+        com.facebook.Settings.publishInstallAsync(this.getApplicationContext(), "560881913969017");
     }
 
     @Override
